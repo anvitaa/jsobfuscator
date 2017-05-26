@@ -57,12 +57,14 @@ def remove_strings(js_file):
 		newcode = re.sub(re.escape(item),hex(seed)+"["+str(idx)+ "]", newcode)
 	
 	jsarray = jsarray[:-1]+"};"
-	return {jsarray, newcode}
+	return (jsarray, newcode)
 
-def store_strings(strings, code)
+def store_strings(strings, code):
+
 	return strings + code	
 
 result = remove_strings(sys.argv[1])
+print result
 stringarray = result[0]
 code = result[1]
 print stringarray+remove_spaces(replace_variables(code))
