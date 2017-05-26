@@ -6,8 +6,7 @@ import random
 global seed 
 
 seed = random.randint(0,500)
-global jsarray 
-jsarray= ""
+
 
 variables = {}
 def replace_variables (code):
@@ -37,7 +36,7 @@ def remove_spaces(code):
 	return re.sub(r'([^\$\w])(\s+)([\$\w])', r'\1\3', y)
 
 
-def store_strings(js_file):
+def remove_strings(js_file):
 	contents = open(js_file, 'r+')
 	code = contents.read()
 	contents.close()
@@ -58,7 +57,12 @@ def store_strings(js_file):
 		newcode = re.sub(re.escape(item),hex(seed)+"["+str(idx)+ "]", newcode)
 	
 	jsarray = jsarray[:-1]+"};"
-	return newcode
+	return {jsarray, newcode}
 
-	
-print jsarray+remove_spaces(replace_variables(store_strings(sys.argv[1])))
+def store_strings(strings, code)
+	return strings + code	
+
+result = remove_strings(sys.argv[1])
+stringarray = result[0]
+code = result[1]
+print stringarray+remove_spaces(replace_variables(code))
