@@ -29,3 +29,9 @@ def random_name_generator ():
 	global seed
 	seed = seed + 1
 	return '_'+hex(seed)
+
+
+def remove_spaces(code):
+	x = re.sub(r'([\$\w])(\s+)([^\$\w])', r'\1\3', code)
+	y = re.sub(r'([^\w\$])(\s+)([^\w\$])', r'\1\3', x)
+	return re.sub(r'([^\$\w])(\s+)([\$\w])', r'\1\3', y)
